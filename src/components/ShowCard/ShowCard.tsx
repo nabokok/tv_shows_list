@@ -17,11 +17,17 @@ interface Props {
 function ShowCard({ show }: Props) {
   const { name, rating, image, id } = show;
 
+
   return (
     <Card className="w-full flex flex-col justify-between">
       <Link to={`/tv-shows/${id}`}>
         <CardHeader className="flex-grow">
-          <img className="object-cover h-[300px]" src={image ? image.original : noImage} alt={name} />
+          <img
+            className="object-cover h-[300px]"
+            src={image ? image.original : noImage}
+            alt={name}
+            loading="lazy"
+          />
         </CardHeader>
         <CardContent className="flex items-center gap-4">
           <CardTitle className="mb-2">{name}</CardTitle>

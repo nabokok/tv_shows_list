@@ -12,8 +12,6 @@ function Catalog() {
 
   const { data, loading, error } = useFetch<ShowData[]>(`/search/shows?q=${query}`);
 
-  console.log('data: ', data)
-
 
   if (error) {
     return (
@@ -36,7 +34,8 @@ function Catalog() {
   return (
     <section className="py-10">
       <div className="container">
-        {data?.length ? <CatalogList list={data} /> : <NoResult text="Sorry, nothing found with this search" />}
+        {data && <CatalogList list={data} />}
+        {(!data?.length && query) && <NoResult text="Sorry, nothing found with this search" />}
       </div>
     </section>
   )
