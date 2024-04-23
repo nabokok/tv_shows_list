@@ -10,8 +10,16 @@ function Catalog() {
   const [searchParams] = useSearchParams();
   const query = searchParams.get('q') || '';
 
+
   const { data, loading, error } = useFetch<ShowData[]>(`/search/shows?q=${query}`);
 
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <Loader2 className="h-16 w-16 animate-spin" />
+      </div>
+    )
+  }
 
   if (error) {
     return (
@@ -23,19 +31,10 @@ function Catalog() {
     )
   }
 
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <Loader2 className="h-16 w-16 animate-spin" />
-      </div>
-    )
-  }
-
   return (
     <section className="py-10">
       <div className="container">
-        {data && <CatalogList list={data} />}
-        {(!data?.length && query) && <NoResult text="Sorry, nothing found with this search" />}
+        {data?.length ? <CatalogList list={data} /> : <NoResult text="Sorry, nothing found with this search" />}
       </div>
     </section>
   )

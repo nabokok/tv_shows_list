@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useSearchParams } from 'react-router-dom';
+import { useParams, useSearchParams, Link } from 'react-router-dom';
 import { Input } from "@/components/ui/input";
 import useDebounce from '@/hooks/useDebounde';
 
@@ -7,7 +7,8 @@ function Header() {
   const [query, setQuery] = useState('');
   const searchParams = useSearchParams();
   const setSearchParams = searchParams[1];
-  const { id } = useParams();
+  const { name } = useParams();
+
 
   const debouncedValue = useDebounce(query, 300);
 
@@ -27,15 +28,17 @@ function Header() {
   };
 
   return (
-    <header className="py-2 border-b border-slate-300">
+    <header className="py-2 border-b border-slate-300 min-h-[57px] flex items-center">
       <div className="container px-4">
         <div className="flex max-w-sm ">
-          {!id && <Input
+          {!name ? <Input
             type="text"
             placeholder="Type the show's name"
             value={query}
             onChange={handleInputChange}
-          />}
+          /> : (
+            <Link to="/">Home</Link>
+          )}
         </div>
       </div >
     </header >

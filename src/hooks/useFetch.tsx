@@ -5,7 +5,7 @@ const BASE_URL = 'https://api.tvmaze.com';
 function useFetch<T = unknown>(url: string): { data: T | null; loading: boolean; error: string | null; } {
   const [data, setData] = useState<T | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string | null>(null)
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     setData(null);
@@ -21,15 +21,16 @@ function useFetch<T = unknown>(url: string): { data: T | null; loading: boolean;
         return response.json();
       })
       .then(data => {
-        setLoading(false);
         setData(data);
       })
       .catch(err => {
         if (err.name !== 'AbortError') {
-          setLoading(false);
           setError(err.message);
         }
-      });
+      })
+      .finally(() => {
+        setLoading(false);
+      })
 
   }, [url]);
 

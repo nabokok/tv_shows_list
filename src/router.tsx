@@ -18,11 +18,11 @@ export const router = createBrowserRouter([
         element: <Catalog />
       },
       {
-        path: "/movies",
+        path: "/shows",
         element: <Navigate to="/" />
       },
       {
-        path: "/movies/:id",
+        path: "/shows/:name",
         element: <Show />
       },
     ]
