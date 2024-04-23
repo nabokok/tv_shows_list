@@ -9,7 +9,6 @@ function Header() {
   const setSearchParams = searchParams[1];
   const { name } = useParams();
 
-
   const debouncedValue = useDebounce(query, 300);
 
   useEffect(() => {
@@ -20,6 +19,7 @@ function Header() {
     }
 
     setSearchParams({ q: debouncedValue });
+
   }, [debouncedValue]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -37,7 +37,7 @@ function Header() {
             value={query}
             onChange={handleInputChange}
           /> : (
-            <Link to="/">Home</Link>
+            <Link to="/" onClick={() => setQuery('')}>Home</Link>
           )}
         </div>
       </div >

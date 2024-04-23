@@ -5,7 +5,7 @@ import { Show as ShowType } from '@/types/Show';
 import { useParams } from 'react-router-dom';
 import { Loader2 } from "lucide-react";
 import parse from 'html-react-parser';
-import noImage from '@/assets/images/no-image.png';
+import noImage from '/no-image.png';
 
 function Show() {
   const { name: showName } = useParams();
@@ -36,7 +36,7 @@ function Show() {
     <section className='py-10'>
       <div className='container'>
         <div className='flex flex-col gap-10 md:flex-row'>
-          <img className="min-w-[200px] max-w-[100%] h-full min-h-[30vh]" src={image ? image?.original : noImage} alt={name} />
+          <img className="min-w-[200px] max-w-[100%] h-full min-h-[30vh] max-h-[70vh] object-cover" src={image ? image?.original : noImage} alt={name} />
           <div>
             <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl mb-2">
               {name}
@@ -56,7 +56,7 @@ function Show() {
                 href={url}
                 target='blank'
               >
-                {url}
+                {` ${url}`}
               </a>
             </p>
             <p className="leading-7 mb-4">Status: <span className='font-semibold'>{status}</span></p>

@@ -6,7 +6,7 @@ import {
 import App from './App.tsx'
 import NotFound from './pages/NotFound.tsx';
 import Catalog from './pages/Catalog.tsx';
-import Show from './pages/Show.tsx';
+import ShowPage from './pages/ShowPage.tsx';
 
 export const router = createBrowserRouter([
   {
@@ -23,7 +23,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/shows/:name",
-        element: <Show />
+        element: <ShowPage />
       },
     ]
   },

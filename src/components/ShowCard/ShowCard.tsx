@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/card";
 import StarIcon from '../Icons/StarIcon';
 import { Show } from '@/types/Show';
-import noImage from '@/assets/images/no-image.png';
+import noImage from '/no-image.png';
 import { Loader2 } from "lucide-react";
 
 interface Props {

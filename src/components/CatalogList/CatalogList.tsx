@@ -1,4 +1,3 @@
-
 import { ShowData } from "@/types/Show";
 import ShowCard from "../ShowCard";
 
